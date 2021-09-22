@@ -8,6 +8,10 @@ if(parametros[0] == 'count'){
 }else{
     if(parametros[0] == 'size'){
         tamanios();
+    }else{
+        if(parametros[0] == 'length'){
+            caracteres();
+        }
     }
 }
 
@@ -23,15 +27,31 @@ function tamanios(){
 
     fs.readdir(dir, (err, archivos) => {
         archivos.forEach(element => {
-            let texto =  `${element} ${buscarTamanio(element)} kb\n`;
+            let texto =  `${element} ${buscarTamanioKB(element)} kb\n`;
             fs.appendFileSync('summary.txt', texto)
         });
 
     });
-
 }
 
-function buscarTamanio(archivo){
+function buscarTamanioKB(archivo){
     let arch = fs.readFileSync(dir + "//" + archivo);
-    return arch.byteLength;
+    return arch.byteLength/1024;
+}
+
+function caracteres(){
+    fs.writeFileSync('summary.txt','');
+
+    fs.readdir(dir, (err, archivos) => {
+        archivos.forEach(element => {
+            let texto =  `${element} ${buscarCaracteres(element)} chars\n`;
+            fs.appendFileSync('summary.txt', texto)
+        });
+
+    });
+}
+
+function buscarCaracteres(archivo){
+    let arch = fs.readFileSync(dir + "//" + archivo);
+    return arch.toString().length;
 }
