@@ -51,7 +51,8 @@ function tamanios(){
 
 function buscarTamanioKB(archivo){
     let arch = fs.readFileSync(dir + "//" + archivo);
-    return arch.byteLength/1024;
+    let tamanio = arch.byteLength/1024;
+    return tamanio.toFixed(2);
 }
 
 function caracteres(){

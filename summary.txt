@@ -1,8 +1,6 @@
-a.txt 574 chars
-b.txt 1062 chars
-c.txt 613 chars
-d.txt 750 chars
-e.txt 844 chars
-f.txt 996 chars
-
-4839 chars
+a.txt 0.56 kb
+b.txt 1.04 kb
+c.txt 0.60 kb
+d.txt 0.73 kb
+e.txt 0.82 kb
+f.txt 0.97 kb
