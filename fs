@@ -59,10 +59,13 @@ function caracteres(){
 
     fs.readdir(dir, (err, archivos) => {
         if(err==null){
-            archivos.forEach(element => {
-                let texto =  `${element} ${buscarCaracteres(element)} chars\n`;
-                fs.appendFileSync('summary.txt', texto)
-            });
+            let total = archivos.reduce(function(acum, elemento){
+                            let tamanio = buscarCaracteres(elemento);
+                            let texto =  `${elemento} ${tamanio} chars\n`;
+                            fs.appendFileSync('summary.txt', texto)
+                            return acum+=tamanio;
+                        },0);
+            fs.appendFileSync('summary.txt', `\n${total} chars\n`)
         }else{
             console.log(`Error: ${err}`);
         }
