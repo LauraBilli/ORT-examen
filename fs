@@ -22,7 +22,6 @@ switch (parametros[0]) {
         break;
 }
 
-
 function contar(){
     fs.readdir(dir, (err, archivos) => {
         if(err==null){
